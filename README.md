@@ -1,6 +1,6 @@
 # 🚀 API Automation Framework using Rest Assured (Java)
 
-### 👨‍💻 Author: **Pramod Dutta**
+### 👨‍💻 Author: **Vineet Verma**
 A **powerful, scalable, and CI/CD-ready API Automation Framework** built using **Rest Assured + Java** for testing **Restful Booker CRUD APIs**.
 
 ---
