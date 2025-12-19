@@ -8,7 +8,9 @@ import io.restassured.specification.RequestSpecification;
 import org.example.asserts.assertActions;
 import org.example.endpoints.apiConstants;
 import org.example.modules.payloadManager;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
 public class baseTest {
@@ -18,7 +20,7 @@ public class baseTest {
     public Response r;
     public ValidatableResponse vr;
 
-    @BeforeTest
+    @BeforeClass
     public void setup(){
         System.out.println("Start Test.");
         payloadManager pm = new payloadManager();
@@ -30,7 +32,7 @@ public class baseTest {
 
     }
 
-    @AfterTest
+    @AfterClass
     public void teardown(){
         System.out.println("End Test.");
     }
