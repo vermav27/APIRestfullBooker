@@ -2,9 +2,11 @@ package org.example.modules;
 
 import com.github.javafaker.Faker;
 import com.google.gson.Gson;
+import org.example.pojos.request.auth;
 import org.example.pojos.request.booking;
 import org.example.pojos.request.bookingdates;
 import org.example.pojos.response.bookingresponse;
+import org.example.pojos.response.tokenresponse;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -101,6 +103,25 @@ public class payloadManager {
         String jsonStringBooking = gson.toJson(booking);
         return jsonStringBooking;
 
+    }
+
+    public static String createSerializedTokenPayload(){
+
+        auth auth =new auth();
+        auth.setUsername("admin");
+        auth.setPassword("password123");
+
+        //Serialize
+        gson = new Gson();
+        String jsonString_auth = gson.toJson(auth);
+        return jsonString_auth;
+
+    }
+
+    public static String tokenResponseJava(String responseString){
+        gson = new Gson();
+        tokenresponse tokenresponse = gson.fromJson(responseString,org.example.pojos.response.tokenresponse.class);
+        return tokenresponse.getToken();
     }
 
 

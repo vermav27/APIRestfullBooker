@@ -34,5 +34,9 @@ public class assertActions {
         assertThat(KeyExpect).isNotNull();
     }
 
+    public static void verifyTokenIsNotNull(String tokenVal){
+        assertThat(tokenVal).isNotNull();
+    }
+
 
 }
