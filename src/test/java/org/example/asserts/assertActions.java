@@ -38,5 +38,9 @@ public class assertActions {
         assertThat(tokenVal).isNotNull();
     }
 
+    public static void verifyPingResponseBody(String responseBody){
+        assertThat(responseBody).isEqualTo("Created");
+    }
+
 
 }
