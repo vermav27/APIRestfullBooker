@@ -1,4 +1,4 @@
-package org.example.tests.restfullbooker.CRUD.CreateBooking;
+package org.example.tests.restfullbooker.CRUD;
 
 
 import io.qameta.allure.Description;
@@ -13,7 +13,7 @@ import org.example.modules.payloadManager;
 
 public class Test_CreateBooking extends baseTest {
 
-    @Test
+    @Test(groups = "reg",priority = 1)
     @Description("TC-01-Verify the booking is being created.")
     @Owner("Vineet Verma")
     public void testCreateBooking_POST_positive(){
