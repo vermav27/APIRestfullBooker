@@ -3,6 +3,7 @@ package org.example.tests.restfullbooker.E2E;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.example.asserts.assertActions;
 import org.example.base.baseTest;
@@ -54,7 +55,6 @@ public class E2E_1_CRUD extends baseTest {
         String bookingId = from_createBooking.getBookingid();
         iTestContext.setAttribute("bid",bookingId);
 
-        System.out.println("booking : " + bookingId);
         //Assertions
         assertActions.verifyBookingIdIsNotNull(r);
         assertActions.verifyFirstName(actualFirstName,expectedFirstname);
@@ -68,7 +68,6 @@ public class E2E_1_CRUD extends baseTest {
     public void tc03_GetBookingTest(ITestContext iTestContext){
 
         String bookingId = (String)iTestContext.getAttribute("bid");
-        System.out.println("booking 2 : " + bookingId);
         rs.basePath(apiConstants.CREATE_UPDATE_BOOKING_URL + "/" + bookingId );
         r = RestAssured.given(rs).log().all().when().get();
 
@@ -85,17 +84,53 @@ public class E2E_1_CRUD extends baseTest {
 
     }
 
-    @Test(groups = "reg",priority = 4,enabled = false)
+    @Test(groups = "reg",priority = 4)
     @Description("TC-04-Verify the update booking api.")
     @Owner("Vineet Verma")
-    public void tc04_UpdateBookingTest(){
+    public void tc04_UpdateBookingTest(ITestContext iTestContext){
+
+        String bookingId = (String)iTestContext.getAttribute("bid");
+        String token_val = getToken();
+        iTestContext.setAttribute("tokenValue",token_val);
+
+        rs.basePath(apiConstants.CREATE_UPDATE_BOOKING_URL + "/" + bookingId);
+
+        r = RestAssured.given(rs)
+                .cookie("token",token_val)
+                .body(payloadManager.createUpdatePayloadBookingAsString())
+                .when().log().all()
+                .put();
+
+        //Extraction
+        booking booking_fromResponse = payloadManager.bookingResponse_withoutId(r.asString());
+        String expectedFirstname = payloadManager.firstname;
+        String expectedLastName = payloadManager.lastname;
+        String actualFirstName = booking_fromResponse.getFirstname();
+        String actualLastName = booking_fromResponse.getLastname();
+
+        //Assertions
+        assertActions.verifyResponseCode(r,200);
+        assertActions.verifyFirstName(actualFirstName,expectedFirstname);
+        assertActions.verifyLastName(actualLastName,expectedLastName);
 
     }
 
-    @Test(groups = "reg",priority = 5,enabled = false)
+    @Test(groups = "reg",priority = 5)
     @Description("TC-05-Verify the delete booking api.")
     @Owner("Vineet Verma")
-    public void tc05_DeleteBookingTest(){
+    public void tc05_DeleteBookingTest(ITestContext iTestContext){
+
+        String bookingToDelete = (String) iTestContext.getAttribute("bid");
+        String tokenForDelete = (String) iTestContext.getAttribute("tokenValue");
+
+        rs.basePath(apiConstants.CREATE_UPDATE_BOOKING_URL + "/" + bookingToDelete);
+
+        r = rs.cookie("token",tokenForDelete).log().all().delete();
+        String response = r.asString();
+
+        //Assertion
+        assertActions.verifyResponseCode(r,201);
+        assertActions.verifyResponseBody(response,"Created","Verify deletion.");
 
     }
 
