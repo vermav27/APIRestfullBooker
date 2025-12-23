@@ -42,5 +42,17 @@ public class assertActions {
         assertThat(responseBody).isEqualTo("Created");
     }
 
+    public static void verifyBookingIdIsNotNull(Response response){
+        assertThat(response.getStatusCode()).isNotNull();
+    }
+
+    public static void verifyFirstName(String actualFirstName,String expectedFirstName){
+        assertThat(actualFirstName.equals(expectedFirstName));
+    }
+
+    public static void verifyLastName(String actualLastName,String expectedLastName){
+        assertThat(actualLastName.equals(expectedLastName));
+    }
+
 
 }

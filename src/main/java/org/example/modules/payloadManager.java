@@ -124,5 +124,35 @@ public class payloadManager {
         return tokenresponse.getToken();
     }
 
+    public static booking bookingResponse_withoutId(String responseString){
+        gson = new Gson();
+        booking book = gson.fromJson(responseString, booking.class);
+        return book;
+    }
+
+    public static String createUpdatePayloadBookingAsString(){
+
+
+        booking booking = new booking();
+        booking.setFirstname(firstname);
+        booking.setLastname(lastname);
+        booking.setTotalprice(totalPrice);
+        booking.setDepositpaid(depositPaid);
+
+        bookingdates bookingdates = new bookingdates();
+        bookingdates.setCheckin(checkinFormated);
+        bookingdates.setCheckout(checkoutFormated);
+
+        booking.setBookingdates(bookingdates);
+        booking.setAdditionalneeds(additionalNeeds);
+        System.out.println(booking);
+
+        //java Object to JSON
+        gson = new Gson();
+        String jsonStringBooking = gson.toJson(booking);
+        return jsonStringBooking;
+
+    }
+
 
 }
