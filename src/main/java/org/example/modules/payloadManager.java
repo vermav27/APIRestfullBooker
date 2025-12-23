@@ -124,5 +124,11 @@ public class payloadManager {
         return tokenresponse.getToken();
     }
 
+    public static booking bookingResponse_withoutId(String responseString){
+        gson = new Gson();
+        booking book = gson.fromJson(responseString, booking.class);
+        return book;
+    }
+
 
 }
