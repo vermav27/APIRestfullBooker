@@ -10,7 +10,7 @@ import org.example.endpoints.apiConstants;
 import org.testng.annotations.Test;
 
 
-public class Test_PingRequest extends baseTest {
+public class TC_01_HealthCheck extends baseTest {
 
     @Test(groups = "reg",priority = 1)
     @Owner("Vineet Verma")

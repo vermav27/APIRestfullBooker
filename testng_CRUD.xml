@@ -5,9 +5,9 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/Users/DELL/IdeaProjects/APIRestfullBooker">
         <classes >
-            <class name="org.example.tests.restfullbooker.CRUD.Test_CreateBooking"/>
-            <class name="org.example.tests.restfullbooker.CRUD.Test_PingRequest"/>
-            <class name="org.example.tests.restfullbooker.CRUD.Test_CreateToken"/>
+            <class name="org.example.tests.restfullbooker.CRUD.TC_03_CreateBooking"/>
+            <class name="org.example.tests.restfullbooker.CRUD.TC_01_HealthCheck"/>
+            <class name="org.example.tests.restfullbooker.CRUD.TC_02_AuthToken"/>
             <class name="org.example.tests.restfullbooker.E2E.E2E_1_CRUD"/>
             <class name="org.example.tests.restfullbooker.E2E.E2E_2_Create_Delete_Verify"/>
         </classes>
