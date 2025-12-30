@@ -1,6 +1,9 @@
 package org.example.asserts;
 
 import io.restassured.response.Response;
+import org.example.pojos.response.allBookingResponse;
+
+import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.Assert.assertEquals;
@@ -33,6 +36,15 @@ public class assertActions {
         //assertJ
         assertThat(KeyExpect).isNotNull();
     }
+
+    public static void verifySomeRandomIdIsNotNull(allBookingResponse[] allResponse){
+
+        Integer numberOfIds = allResponse.length - 1;
+        Random random = new Random();
+        int randomNumber = random.nextInt((numberOfIds - 0) + 1) + 0;
+        assertThat(allResponse[randomNumber].getBookingid()).isNotNull();
+
+    };
 
     public static void verifyTokenIsNotNull(String tokenVal){
         assertThat(tokenVal).isNotNull();
