@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import org.example.pojos.request.auth;
 import org.example.pojos.request.booking;
 import org.example.pojos.request.bookingdates;
+import org.example.pojos.response.allBookingResponse;
 import org.example.pojos.response.bookingresponse;
 import org.example.pojos.response.tokenresponse;
 
@@ -64,6 +65,12 @@ public class payloadManager {
         gson = new Gson();
         bookingresponse bookingresponse = gson.fromJson(responseString, org.example.pojos.response.bookingresponse.class);
         return bookingresponse;
+    }
+
+    public static allBookingResponse[] allBookingResponse(String responseAllBookings){
+        gson = new Gson();
+        allBookingResponse[] allBookingResponse = gson.fromJson(responseAllBookings, allBookingResponse[].class);
+        return allBookingResponse;
     }
 
     public static String createInvalidPayloadBookingAsString(){
