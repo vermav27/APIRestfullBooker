@@ -9,7 +9,7 @@ import org.example.endpoints.apiConstants;
 import org.example.modules.payloadManager;
 import org.testng.annotations.Test;
 
-public class Test_CreateToken extends baseTest {
+public class TC_02_AuthToken extends baseTest {
 
     @Test(groups = "reg",priority = 1)
     @Owner("Vineet Verma")

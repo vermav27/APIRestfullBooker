@@ -11,7 +11,7 @@ import org.example.pojos.response.bookingresponse;
 import org.testng.annotations.Test;
 import org.example.modules.payloadManager;
 
-public class Test_CreateBooking extends baseTest {
+public class TC_03_CreateBooking extends baseTest {
 
     @Test(groups = "reg",priority = 1)
     @Description("TC-01-Verify the booking is being created.")
