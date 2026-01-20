@@ -10,6 +10,7 @@
             <class name="org.example.tests.restfullbooker.CRUD.TC_03_CreateBooking"/>
             <class name="org.example.tests.restfullbooker.CRUD.TC_04_ReturnBookingIds"/>
             <class name="org.example.tests.restfullbooker.CRUD.TC_05_GetBookingById"/>
+            <class name="org.example.tests.restfullbooker.CRUD.TC_06_UpdateBookingByValidToken"/>
             <class name="org.example.tests.restfullbooker.E2E.E2E_1_CRUD"/>
             <class name="org.example.tests.restfullbooker.E2E.E2E_2_Create_Delete_Verify"/>
         </classes>
