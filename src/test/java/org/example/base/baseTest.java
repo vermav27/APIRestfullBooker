@@ -31,7 +31,6 @@ public class baseTest {
         rs.baseUri(apiConstants.BASE_URL);
         rs.contentType(ContentType.JSON);
 
-
     }
 
     @AfterClass
