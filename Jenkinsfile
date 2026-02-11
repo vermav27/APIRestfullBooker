@@ -1,32 +1,28 @@
 pipeline {
     agent any
 
-    tools {
-        jdk 'JDK25'
-        maven 'Maven3'
-    }
-
     stages {
 
-        stage('Checkout Code') {
+        stage('Checkout') {
             steps {
+                echo "Building branch: ${env.BRANCH_NAME}"
                 checkout scm
             }
         }
 
-        stage('Run API Automation Tests') {
+        stage('Run API Tests') {
             steps {
-                bat 'mvn clean test "-DsuiteXmlFile=testng_CRUD.xml"'
+                sh 'mvn clean test "-DsuiteXmlFile=testng_CRUD.xml"'
             }
         }
     }
 
     post {
         success {
-            echo 'API Automation Pipeline PASSED'
+            echo "BUILD PASSED for ${env.BRANCH_NAME}"
         }
         failure {
-            echo 'API Automation Pipeline FAILED'
+            echo "BUILD FAILED for ${env.BRANCH_NAME}"
         }
     }
 }
