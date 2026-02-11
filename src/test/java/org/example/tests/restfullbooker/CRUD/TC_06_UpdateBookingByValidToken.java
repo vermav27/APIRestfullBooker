@@ -38,6 +38,7 @@ public class TC_06_UpdateBookingByValidToken extends baseTest {
         assertActions.verifyResponseCode(r,200);
         assertActions.verifyFirstName(actualFirstName,expectedFirstName);
         assertActions.verifyLastName(actualLastName,expectedLastName);
+
         //End Test
 
     }
