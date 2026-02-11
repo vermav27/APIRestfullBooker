@@ -19,7 +19,6 @@ public class TC_06_UpdateBookingByValidToken extends baseTest {
     @Owner("Vineet Verma")
     public void testUpdateBooking(ITestContext iTestContext){
 
-        //Start Test
         String tok = (String) iTestContext.getAttribute("tokenVal");
         String bid = (String)iTestContext.getAttribute("bid");
         rs.basePath(apiConstants.CREATE_UPDATE_BOOKING_URL + "/" + bid);
@@ -38,8 +37,6 @@ public class TC_06_UpdateBookingByValidToken extends baseTest {
         assertActions.verifyResponseCode(r,200);
         assertActions.verifyFirstName(actualFirstName,expectedFirstName);
         assertActions.verifyLastName(actualLastName,expectedLastName);
-
-        //End Test
 
     }
 
