@@ -17,6 +17,7 @@ public class TC_01_HealthCheck extends baseTest {
     @Description("TC-01-Verify the ping request.")
     public void testPing_GET_positive(){
 
+        //Start Test
         rs.basePath(apiConstants.PING_URL);
         r = RestAssured.given(rs)
                 .when().log().all()
@@ -27,6 +28,7 @@ public class TC_01_HealthCheck extends baseTest {
         assertActions.verifyPingResponseBody(pingResponse);
         assertActions.verifyResponseCode(r,201);
 
+        //End Of Test
     }
 
 
